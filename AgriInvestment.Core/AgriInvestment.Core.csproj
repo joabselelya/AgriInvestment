@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="Extensions\MatchParentAttribute.cs" />
+    <Compile Include="Extensions\ObjectExtensionMethods.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\InvestmentCycle.cs" />
     <Compile Include="Models\Product.cs" />

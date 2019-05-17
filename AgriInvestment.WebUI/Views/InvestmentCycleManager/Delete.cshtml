@@ -1,0 +1,72 @@
+﻿@model AgriInvestment.Core.Models.InvestmentCycle
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>InvestmentCycle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.From)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.From)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinimumAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinimumAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaximumAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaximumAmount)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

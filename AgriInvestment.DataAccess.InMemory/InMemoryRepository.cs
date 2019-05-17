@@ -1,4 +1,5 @@
 ﻿using AgriInvestment.Core.Contracts;
+using AgriInvestment.Core.Extensions;
 using AgriInvestment.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace AgriInvestment.DataAccess.InMemory
             if (tToUpdate == null)
                 throw new Exception("No " + className + " to update!");
 
-            tToUpdate = t;
+            tToUpdate.CopyPropertiesFrom(t);
         }
 
         public T Find(int Id)

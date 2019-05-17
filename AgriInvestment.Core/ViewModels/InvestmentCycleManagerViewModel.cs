@@ -9,7 +9,7 @@ namespace AgriInvestment.Core.ViewModels
 {
     public class InvestmentCycleManagerViewModel
     {
-        public InvestmentCycle ProductInvestmentCycle { get; set; }
+        public InvestmentCycle InvestmentCycle { get; set; }
         public IEnumerable<Product> Products { get; set; }
 
     }

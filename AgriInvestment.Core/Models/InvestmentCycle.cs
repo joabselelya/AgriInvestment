@@ -19,11 +19,10 @@ namespace AgriInvestment.Core.Models
         [ForeignKey("InvestmentProduct")]
         [Required(ErrorMessage = "Investment product is required")]
         public int ProductId { get; set; }
-        public Product InvestmentProduct { get; set; }
+        public Product Product { get; set; }
 
         [DisplayName("Target Amount (KES)")]
         [Range(50000, 99999999, ErrorMessage = ("Target investment amount should be between KES. 50,000 and 99,999,999"))]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
         [Required(ErrorMessage = "Target investement amount is required")]
         public decimal TargetAmount { get; set; }
 
