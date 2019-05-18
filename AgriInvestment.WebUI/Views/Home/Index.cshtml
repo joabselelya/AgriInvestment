@@ -1,31 +1,111 @@
 ﻿@{
+    /**/
+
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<link href="~/Content/carouselAnimation.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="~/Scripts/carouselAnimation.js"></script>
+
+<div class="row">
+    <div class="col">
+        <!-- indicators -->
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+
+            <!-- carousel content -->
+            <div class="carousel-inner">
+                <!-- first slide -->
+                <div class="carousel-item active" style="width:100%; height:200px">
+                    <img class="d-block w-100" src="/Images/Aqua-Invests.jpg" alt="First slide" style="object-fit:contain">
+                    <div class="carousel-caption d-md-block">
+                        <h2 data-animation="animated bounceInLeft">
+                            Invest
+                        </h2>
+                        <h3 data-animation="animated bounceInRight">
+                            Kenya's leading specialized online platform for investing in agri-business!
+                        </h3>
+                        <button class="btn btn-primary btn-lg" data-animation="animated zoomInUp">Learn more &raquo;</button>
+                    </div>
+                </div>
+
+                <!-- second slide -->
+                <div class="carousel-item" style="width:100%; height:200px">
+                    <img class="d-block w-100" src="/Images/save-bigg.jpg" alt="First slide" style="object-fit:contain">
+                    <div class="carousel-caption d-md-block">
+                        <h2 data-animation="animated bounceInLeft">
+                            Leverage
+                        </h2>
+                        <h3 data-animation="animated bounceInRight">
+                            Partner with those who have specialized in farming!
+                        </h3>
+                        <button class="btn btn-primary btn-lg" data-animation="animated zoomInUp">Learn more &raquo;</button>
+                    </div>
+                </div>
+
+                <!-- third slide -->
+                <div class="carousel-item" style="width:100%; height:200px">
+                    <img class="d-block w-100" src="/Images/farming-investment.jpg" alt="First slide" style="object-fit:contain">
+                    <div class="carousel-caption d-md-block">
+                        <h2 data-animation="animated bounceInLeft">
+                            Earn
+                        </h2>
+                        <h3 data-animation="animated bounceInRight">
+                            Assured returns and we have the track record to back us!
+                        </h3>
+                        <button class="btn btn-primary btn-lg" data-animation="animated zoomInUp">Learn more &raquo;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- controls -->
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+    </div>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+        <h2>Get Started Easily</h2>
+        <p style="text-align:justify">
+            Gone are the days when you have to roll up your sleeves and get dirty to invest in
+            agri-business! Now made easy, on Agri-Invest you only need to register to open your
+            account, select your portfolio of preferred agricultural opportunities in upcoming 
+            cycles and make payment online. It's that EASY! All our interactions and transactions are
+            online!
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Wide Opportunity</h2>
+        <p style="text-align:justify">
+            We purposely curate a varied set of opportunites from short to long term agri-business 
+            investment. Equally varied are the entry points of investments accommodating an equally 
+            diversified portfolio of investors. There''s something for everyone!
+        </p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Assured Returns</h2>
+        <p style="text-align:justify">
+            By partnering with reputable commercial farmers we remove the speculation in the agri-business 
+            investment. What's more, ALL the investments made on the Agri-Invest platform are insured!
+        </p>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-4"><a class="btn btn-default btn-dark bg-farmgreen" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></div>
+    <div class="col-md-4"><a class="btn btn-default btn-dark bg-farmgreen" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></div>
+    <div class="col-md-4"><a class="btn btn-default btn-dark bg-farmgreen" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></div>
+</div>
+
