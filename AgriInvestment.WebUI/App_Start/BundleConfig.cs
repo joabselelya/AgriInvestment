@@ -25,6 +25,7 @@ namespace AgriInvestment.WebUI
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/animate.css",
+                        "~/Content/Layout.css",
                         "~/Content/site.css"));
         }
     }
