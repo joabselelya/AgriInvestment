@@ -4193,6 +4193,11 @@ input[type="button"].btn-block {
   list-style: none;
 }
 
+
+.nav-item.active{
+    color:white;
+}
+
 .navbar-nav .nav-link {
   padding-right: 0;
   padding-left: 0;
