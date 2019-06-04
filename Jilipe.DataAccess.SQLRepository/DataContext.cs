@@ -11,7 +11,7 @@ namespace Jilipe.DataAccess.SQLRepository
     public class DataContext : DbContext
     {
         public DataContext()
-            : base("DefaultConnection")
+            : base("JilipeDBConnection")
         {
 
         }

@@ -21,7 +21,7 @@ namespace AgriInvestment.WebUI.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("JilipeDBConnection", throwIfV1Schema: false)
         {
         }
 

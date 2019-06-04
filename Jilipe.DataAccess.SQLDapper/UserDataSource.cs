@@ -33,7 +33,6 @@ namespace Jilipe.DataAccess.SQLDapper
             spParams.Add("FirstName", theUser.FirstName);
             spParams.Add("MiddleName", theUser.MiddleName);
             spParams.Add("Surname", theUser.Surname);
-            spParams.Add("PasswordHash", theUser.PasswordHash);
 
             DapperORM.ExecuteWithoutReturn("AddEditUser", spParams);
         }
