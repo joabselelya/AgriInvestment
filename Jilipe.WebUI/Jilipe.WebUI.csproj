@@ -400,6 +400,7 @@
     <Content Include="Views\Shared\EditorTemplates\Template_ProductCategory.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Template_Product.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Template_InvestmentCycle.cshtml" />
+    <Content Include="Views\Home\Legal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

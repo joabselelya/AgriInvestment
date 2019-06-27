@@ -26,5 +26,10 @@ namespace AgriInvestment.WebUI.Controllers
 
             return View();
         }
+
+        public ActionResult Legal()
+        {
+            return View();
+        }
     }
 }
