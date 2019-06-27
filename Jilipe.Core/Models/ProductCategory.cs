@@ -11,12 +11,12 @@ namespace AgriInvestment.Core.Models
     public class ProductCategory : BaseEntity
     {
         [StringLength(20)]
-        [DisplayName("Category Name")]
+        [DisplayName("Name")]
         [Required(ErrorMessage = "Product category name is required!")]
         public string Name { get; set; }
 
-        [DisplayName("Category Description")]
-        [Required(ErrorMessage = "Product category Description is required")]
+        [DisplayName("Description")]
+        [Required(ErrorMessage = "Product category description is required")]
         public string Description { get; set; }
 
         public ICollection<Product> Products { get; set; }

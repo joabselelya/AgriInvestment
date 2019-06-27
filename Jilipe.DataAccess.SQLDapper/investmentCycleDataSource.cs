@@ -10,14 +10,9 @@ using System.Threading.Tasks;
 
 namespace Jilipe.DataAccess.SQLDapper
 {
-    public class investmentCycleDataSource
+    public class InvestmentCycleDataSource
     {
-        public List<InvestmentCycle> GetAll()
-        {
-            return (List<InvestmentCycle>)DapperORM.ReturnList<InvestmentCycle>("GetInvestmentCycles");
-        }
-
-        public List<InvestmentCycleManagerViewModel> GetAllVm()
+        public List<InvestmentCycleManagerViewModel> GetAll()
         {
             return (List<InvestmentCycleManagerViewModel>)DapperORM.ReturnList<InvestmentCycleManagerViewModel>("GetInvestmentCycles");
         }

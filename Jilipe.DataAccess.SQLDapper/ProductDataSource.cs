@@ -12,12 +12,7 @@ namespace Jilipe.DataAccess.SQLDapper
 {
     public class ProductDataSource
     {
-        public List<Product> GetAll()
-        {
-            return (List<Product>)DapperORM.ReturnList<Product>("GetProducts");
-        }
-
-        public List<ProductManagerViewModel> GetAllVm()
+        public List<ProductManagerViewModel> GetAll()
         {
             return (List<ProductManagerViewModel>)DapperORM.ReturnList<ProductManagerViewModel>("GetProducts");
         }
@@ -39,6 +34,7 @@ namespace Jilipe.DataAccess.SQLDapper
             spParams.Add("Name", product.Name);
             spParams.Add("Description", product.Description);
             spParams.Add("ProductCategoryId", product.ProductCategoryId);
+            spParams.Add("InvestmentPeriod", product.InvestmentPeriod);
             spParams.Add("UserId", user.Id);
 
             DapperORM.ExecuteWithoutReturn("AddEditProduct", spParams);

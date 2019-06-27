@@ -21,17 +21,25 @@ namespace AgriInvestment.Core.Models
         public int ProductId { get; set; }
         //public Product Product { get; set; }
 
-        [DisplayName("Target Amount (KES)")]
+        [DisplayName("Target Amount")]
         [Range(50000, 99999999, ErrorMessage = ("Target investment amount should be between KES. 50,000 and 99,999,999"))]
         [Required(ErrorMessage = "Target investement amount is required")]
         public decimal TargetAmount { get; set; }
 
-        [DisplayName("Min. Amount (KES)")]
+        [DisplayName("Min. Amount")]
         [Required(ErrorMessage = "Minimum investment amount is required")]
         public decimal MinimumAmount { get; set; }
 
-        [DisplayName("Max. Amount (KES)")]
+        [DisplayName("Max. Amount")]
         [Required(ErrorMessage = "Maximum investment amount is required")]
         public decimal MaximumAmount { get; set; }
+
+        public InvestmentCycle()
+        {
+            FromDate = DateTime.Now;
+            TargetAmount = 100000;
+            MinimumAmount = 1000;
+            MaximumAmount = 10000;
+        }
     }
 }

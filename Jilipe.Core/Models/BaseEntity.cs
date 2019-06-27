@@ -13,12 +13,16 @@ namespace AgriInvestment.Core.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Created On")]
-        public DateTimeOffset CreatedAt { get; set; }
+        ////public int CreatedBy { get; set; }
 
-        public BaseEntity()
-        {
-            this.CreatedAt = DateTime.Now;
-        }
+        ////[DataType(DataType.Date), DisplayFormat(DataFormatString = @"{0:dd\/MM\/yyyy HH:mm}",
+        ////    ApplyFormatInEditMode = true)]
+        ////[DisplayName("Created On")]
+        ////public DateTime? CreatedOn { get; set; }
+
+        ////public int? ModifiedBy { get; set; }
+
+        ////[DisplayName("Modified On")]
+        ////public DateTime? ModifiedOn { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AgriInvestment.Core.Models;
 using Dapper;
 using Jilipe.Core.Models;
+using Jilipe.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace Jilipe.DataAccess.SQLDapper
 {
     public class ProductCategoryDataSource
     {
-        public List<ProductCategory> GetAll()
+        public List<ProductCategoryManagerViewModel> GetAll()
         {
-            return (List<ProductCategory>)DapperORM.ReturnList<ProductCategory>("GetProductCategories");
+            return (List<ProductCategoryManagerViewModel>)DapperORM.ReturnList<ProductCategoryManagerViewModel>("GetProductCategories");
         }
 
         public ProductCategory GetById(int Id)

@@ -12,25 +12,30 @@ namespace AgriInvestment.Core.Models
     public class Product : BaseEntity
     {
         [StringLength(20)]
-        [DisplayName("Product Name")]
+        [DisplayName("Name")]
         [Required(ErrorMessage = "Product name is required")]
         public string Name { get; set; }
 
-        [DisplayName("Product Description")]
+        [DisplayName("Description")]
         [Required(ErrorMessage = "Product description is required")]
         public string Description { get; set; }
 
-        [DisplayName("Investment Months")]
+        [DisplayName("Months")]
         [Range(1, 120, ErrorMessage = "Investment months can only be between 1 and 120 months")]
         [Required(ErrorMessage = ("Investment months is required"))]
-        public byte InvestmentMonths { get; set; }
+        public byte InvestmentPeriod { get; set; }
 
         [DisplayName("Category")]
-        [ForeignKey("CategoryId")]
+        [ForeignKey("Category")]
         [Required(ErrorMessage = "Product category is required")]
         public int ProductCategoryId { get; set; }
         public ProductCategory Category { get; set; }
 
         public ICollection<InvestmentCycle> InvestmentCycles { get; set; }
+
+        public Product()
+        {
+            InvestmentPeriod = 3;
+        }
     }
 }

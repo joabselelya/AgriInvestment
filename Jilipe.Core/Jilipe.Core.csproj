@@ -50,6 +50,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\InvestmentCycleManagerViewModel.cs" />
+    <Compile Include="ViewModels\ProductCategoryManagerViewModel.cs" />
     <Compile Include="ViewModels\ProductManagerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

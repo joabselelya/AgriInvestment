@@ -1,0 +1,55 @@
+﻿@model AgriInvestment.Core.ViewModels.InvestmentCycleManagerViewModel
+
+<div class="k-edit-form-container">
+    @Html.HiddenFor(model => model.Id)
+
+    <div>
+        <div class="k-edit-label">
+            @Html.LabelFor(model => model.ProductId)
+        </div>
+        <div class="k-edit-field">
+            @(Html.Kendo().DropDownListFor(model => model.ProductId)
+                .DataValueField("Id")
+                .DataTextField("Name")
+                .BindTo((List<AgriInvestment.Core.ViewModels.ProductManagerViewModel>)ViewData["Products"])
+            )
+            @Html.ValidationMessageFor(model => model.ProductId)
+        </div>
+    </div>
+    <div>
+        <div class="k-edit-label">
+            @Html.LabelFor(model => model.FromDate)
+        </div>
+        <div class="k-edit-field">
+            @Html.Kendo().DatePickerFor(model => model.FromDate).Format("{0: dd/MM/yyyy}")
+            @Html.ValidationMessageFor(model => model.FromDate)
+        </div>
+    </div>
+    <div>
+        <div class="k-edit-label">
+            @Html.LabelFor(model => model.TargetAmount)
+        </div>
+        <div class="k-edit-field">
+            @Html.EditorFor(model => model.TargetAmount)
+            @Html.ValidationMessageFor(model => model.TargetAmount)
+        </div>
+    </div>
+    <div>
+        <div class="k-edit-label">
+            @Html.LabelFor(model => model.MinimumAmount)
+        </div>
+        <div class="k-edit-field">
+            @Html.EditorFor(model => model.MinimumAmount)
+            @Html.ValidationMessageFor(model => model.MinimumAmount)
+        </div>
+    </div>
+    <div>
+        <div class="k-edit-label">
+            @Html.LabelFor(model => model.MaximumAmount)
+        </div>
+        <div class="k-edit-field">
+            @Html.EditorFor(model => model.MaximumAmount)
+            @Html.ValidationMessageFor(model => model.MaximumAmount)
+        </div>
+    </div>
+</div>

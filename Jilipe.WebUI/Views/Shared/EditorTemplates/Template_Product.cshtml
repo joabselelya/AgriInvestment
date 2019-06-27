@@ -1,0 +1,47 @@
+﻿@model AgriInvestment.Core.ViewModels.ProductManagerViewModel
+
+<div class="k-edit-form-container">
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.InvestmentsCount)
+
+    <div>
+        <div class="k-edit-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="k-edit-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+    </div>
+    <div>
+        <div class="k-edit-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="k-edit-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+    </div>
+    <div>
+        <div class="k-edit-label">
+            @Html.LabelFor(model => model.InvestmentPeriod)
+        </div>
+        <div class="k-edit-field">
+            @Html.EditorFor(model => model.InvestmentPeriod)
+            @Html.ValidationMessageFor(model => model.InvestmentPeriod)
+        </div>
+    </div>
+    <div>
+        <div class="k-edit-label">
+            @Html.LabelFor(model => model.ProductCategoryId)
+        </div>
+        <div class="k-edit-field">
+            @(Html.Kendo().DropDownListFor(model => model.ProductCategoryId)
+                .DataValueField("Id")
+                .DataTextField("Name")
+                .BindTo((List<Jilipe.Core.ViewModels.ProductCategoryManagerViewModel>)ViewData["ProductCategories"])
+            )
+            @Html.ValidationMessageFor(model => model.ProductCategoryId)
+        </div>
+    </div>
+</div>

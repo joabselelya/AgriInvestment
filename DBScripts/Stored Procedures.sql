@@ -9,7 +9,6 @@ CREATE PROC AddEditUser
    ,@FirstName varchar(50)
    ,@MiddleName varchar(50)
    ,@Surname varchar(50)
-   ,@PasswordHash nvarchar(256) 
 AS
 BEGIN
 	IF ISNULL(@Id,0)>0
@@ -17,12 +16,11 @@ BEGIN
 		SET T1.FirstName=@FirstName
 		   ,T1.MiddleName=@MiddleName
 		   ,T1.Surname=@Surname
-		   ,T1.PasswordHash=@PasswordHash
 		FROM [User] T1
 		WHERE T1.Id=@Id
 	ELSE
-		INSERT INTO [User](UserName,FirstName,MiddleName,Surname,PasswordHash)
-		SELECT @UserName,@FirstName,@MiddleName,@Surname,@PasswordHash
+		INSERT INTO [User](UserName,FirstName,MiddleName,Surname)
+		SELECT @UserName,@FirstName,@MiddleName,@Surname
 END
 GO
 
@@ -31,7 +29,7 @@ GO
 CREATE PROC GetUsers
 AS
 BEGIN
-	SELECT T1.Id,T1.UserName,T1.FirstName,T1.MiddleName,T1.Surname,T1.PasswordHash
+	SELECT T1.Id,T1.UserName,T1.FirstName,T1.MiddleName,T1.Surname
 	FROM [User] T1
 END
 GO
@@ -42,7 +40,7 @@ CREATE PROC GetUser
 	@Id int
 AS
 BEGIN
-	SELECT T1.Id,T1.UserName,T1.FirstName,T1.MiddleName,T1.Surname,T1.PasswordHash
+	SELECT T1.Id,T1.UserName,T1.FirstName,T1.MiddleName,T1.Surname
 	FROM [User] T1
 	WHERE T1.Id=@Id
 END

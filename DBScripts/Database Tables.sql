@@ -19,23 +19,6 @@ CREATE TABLE [User](
    ,FirstName varchar(50) NOT NULL
    ,MiddleName varchar(50) NULL
    ,Surname varchar(50) NOT NULL
-   ,Email nvarchar(256) NULL
-   ,EmailConfimed bit NOT NULL
-   ,PasswordHash nvarchar(MAX) NULL
-   ,SecurityStamp nvarchar(MAX) NULL
-   ,PhoneNumber nvarchar(20) NULL
-   ,PhoneNumberConfirmed bit NOT NULL
-   --,EmailConfirmed bit NOT NULL DEFAULT(0)
-   --,PasswordChangeDate datetime NULL
-   --,Avatar nvarchar(70) NULL
-   --,MobileNoConfirmed bit NOT NULL DEFAULT(0)
-   --,IsActive bit NOT NULL DEFAULT(0)
-   --,DeactivateDate datetime NULL
-   ,LoginDate datetime NULL
-   ,TwoFactorEnabled bit NULL
-   ,AccessFailedCount int NOT NULL DEFAULT(0)
-   ,LockoutEnabled bit NOT NULL DEFAULT(0)
-   ,LockoutEndDateUTC datetime NULL
    --,CreatedBy int NOT NULL
    --,CreatedOn datetime NOT NULL
    --,ModifiedBy int NULL
