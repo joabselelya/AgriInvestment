@@ -300,6 +300,9 @@
     <Content Include="Images\invest2.jpg" />
     <Content Include="Images\jilipe.png" />
     <Content Include="Images\paddyrice.jpeg" />
+    <Content Include="Images\Products\1.jpg" />
+    <Content Include="Images\Products\2.jpeg" />
+    <Content Include="Images\Products\Default.jpg" />
     <Content Include="Images\sat-guarantee.png" />
     <Content Include="Images\save-bigg Copy.jpg" />
     <Content Include="Images\save-bigg.jpg" />
@@ -307,6 +310,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cultures\kendo.culture.en-GB.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -401,6 +405,7 @@
     <Content Include="Views\Shared\EditorTemplates\Template_Product.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Template_InvestmentCycle.cshtml" />
     <Content Include="Views\Home\Legal.cshtml" />
+    <Content Include="Views\Home\CSR.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

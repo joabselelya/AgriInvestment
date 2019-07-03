@@ -34,12 +34,17 @@ namespace AgriInvestment.Core.Models
         [Required(ErrorMessage = "Maximum investment amount is required")]
         public decimal MaximumAmount { get; set; }
 
+        [DisplayName("Returns")]
+        public decimal RoI { get; set; }
+
+        public string ImageFile { get; set; }
         public InvestmentCycle()
         {
             FromDate = DateTime.Now;
             TargetAmount = 100000;
             MinimumAmount = 1000;
             MaximumAmount = 10000;
+            RoI = 1.00M;
         }
     }
 }

@@ -1,11 +1,31 @@
 ﻿@{
+    /**/
+
     ViewBag.Title = "Home Page";
 }
 
-<link href="~/Content/carouselAnimation.css" rel="stylesheet" type="text/css" />
+<script type="text/x-kendo-tmpl" id="template">
+    <div class="investOpp">
+        <img src="@Url.Content("~/Images/Products/")#:ImageFile#" alt="#:ProductName# image" />
+        <div>
+            <h5>#:ProductName#</h5>
+            <hr />
+            <p>
+                <label>Target</label> : &nbsp #:TargetAmount# <br />
+                <label>Min</label> : &nbsp #:MinimumAmount# <br />
+                <label>Max</label> : &nbsp #:kendo.toString(MaximumAmount, "KES 0")# <br />
+                <label>From Date</label> : &nbsp #:kendo.toString(FromDate, "dd-MMM-yyyy")# <br />
+                <label>To Date</label> : &nbsp #:kendo.toString(MaturityDate, "dd-MMM-yyyy")# <br />
+                <label>Period</label> : &nbsp #:kendo.toString(InvestmentPeriod, "0 Months")# <br />
+                <label>Returns</label> : &nbsp #:kendo.toString(RoI, "p0")# <br />
+            </p>
+            <button class="k-button" type="button" style="padding-left:1em">Invest</button>
+        </div>
+    </div>
+</script>
 
-<div class="row">
-    <div class="col-md-12 img-fluid" style="padding-left:15px; height:600px; background-image:url(/Images/family1.jpg)">
+<div>
+    <div class="img-fluid" style="padding-left:15px; height:600px; background-image:url(/Images/family1.jpg)">
         @*<div style="padding-top:20px ;padding-left:100px"><h2 class="element">JILIPE &nbsp;<span id="message" style="color:white"></span></h2></div>*@
         <div style="padding-top:150px; padding-left:50px"><h2 class="element">JILIPE &nbsp;<span id="message" style="color:white; padding-left:10px"></span></h2></div>
     </div>
@@ -40,220 +60,182 @@
         </p>
     </div>
 </div>
+
+
 <div class="row">
-    <div class="col-md-4"><a class="btn btn-default btn-dark bg-farmgreen" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></div>
-    <div class="col-md-4"><a class="btn btn-default btn-dark bg-farmgreen" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></div>
-    <div class="col-md-4"><a class="btn btn-default btn-dark bg-farmgreen" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></div>
+    <div class="col-md-4">
+        @(Html.Kendo().Button()
+            .Name("btnGetStarted")
+            .HtmlAttributes(new { type = "button", @class = "k-primary" })
+            .Content("Learn More &raquo;")
+        )
+    </div>
+    <div class="col-md-4">
+        @(Html.Kendo().Button()
+            .Name("btnWideOpportunities")
+            .HtmlAttributes(new { type = "button", @class = "k-primary" })
+            .Content("Learn More &raquo;")
+        )
+    </div>
+    <div class="col-md-4">
+        @(Html.Kendo().Button()
+            .Name("btnAssuredReturns")
+            .HtmlAttributes(new { type = "button", @class = "k-primary" })
+            .Content("Learn More &raquo;")
+        )
+    </div>
 </div>
 
 <div class="row" style="padding-top:20px">
     <h2 class="col-md-12" style="text-align:center; text-decoration-color:white">Investment Opportunities</h2>
-    <div class="card col-md-3" style="width: 18rem;"></div>
-    <div class="card col-md-3" style="width: 18rem;">
-        <img src="~/Images/paddyrice.jpeg" class="card-img-top" alt="..." style="padding-top:15px; height:250px; width:255px">
-        <div class="card-body">
-            <h5 class="card-title">Paddy Rice</h5>
-            <p class="card-text">
-                Target   : KES 10, 000, 000 <br />
-                From Date: November, 2019 <br />
-                Maturity : May, 2020 <br />
-                Returns  : 15% <br />
-            </p>
-            <a href="#" class="btn btn-primary">Invest</a>
-        </div>
+    <div class="demo-section k-content wide">
+        @(Html.Kendo().ListView<AgriInvestment.Core.ViewModels.InvestmentCycleManagerViewModel>()
+                    .Name("InvestmentOpportunitiesCard")
+                    .TagName("div")
+                    .ClientTemplateId("template")
+                    .DataSource(dataSource =>
+                    {
+                        dataSource.Read(read => read.Action("InvestmentCycleCard_Read", "Home"));
+                        dataSource.PageSize(3);
+                    })
+                    .Scrollable(ListViewScrollableMode.Endless)
+        )
     </div>
-    <div class="card col-md-3" style="width: 18rem;">
-        <img src="~/Images/avocadoseedling.jpg" class="card-img-top" alt="..." style="padding-top:15px; height:250px; width:255px">
-        <div class="card-body">
-            <h5 class="card-title">Avocado Seedlings</h5>
-            <p class="card-text">
-                Target   : KES 10, 000, 000 <br />
-                From Date: August, 2019 <br />
-                Maturity : October, 2019 <br />
-                Returns  : 10% <br />
-            </p>
-            <a href="#" class="btn btn-primary">Invest</a>
-        </div>
-    </div>
-    <div class="card col-md-3" style="width: 18rem;"></div>
 </div>
 
-<div class="row" style="padding-top:20px">
+<div style="padding-top:20px">
+
     <h2 class="col-md-12" style="text-align:center; text-decoration-color:white">FAQs</h2>
-
-    <div class="row">
-        <div class="accordion" id="accordionExample">
-            <div class="card">
-                <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            1. How do I join?
-                        </button>
-                    </h2>
-                </div>
-
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="card-body">
+    @(Html.Kendo().PanelBar()
+        .Name("panelbar")
+        .Items(panelbar =>
+        {
+            panelbar.Add().Text("1. How do I join?")
+                .Content(
+                    @<div style="padding: 10px;">
                         click on be an investor and fill the registration form provided
                     </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            2. Is there investment insurance?
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-                        All Jilipe investment products are insured and this ensures in the event of an unplanned eventuality that can affect the product then we are able to get the initial investment back note this doesn’t cover the return on investment.
+                );
+
+            panelbar.Add().Text("2. Is there investment insurance?")
+                .Content(
+                    @<div style="padding: 10px;">
+                            All Jilipe investment products are insured and this ensures in the event of an unplanned eventuality that can affect the product then we are able to get the initial investment back note this doesn’t cover the return on investment.
                     </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingThree">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            3. What's the duration of my investment?
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
+                );
+
+            panelbar.Add().Text("3. What's the duration of my investment?")
+                .Content(
+                    @<div style="padding: 10px;">
                         This will depend on the product you choose which is well detailed on the product information
                     </div>
-                </div>
-            </div>
+                );
 
-            <div class="card">
-                <div class="card-header" id="headingFour">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                            3. What's the duration of my investment?
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
-                        This will depend on the product you choose which is well detailed on the product information
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header" id="headingFour">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            4. Can I terminate investment befoe due date?
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
+            panelbar.Add().Text("4. Can I terminate investment befoe due date?")
+                .Content(
+                    @<div style="padding: 10px;">
                         Once invested it will be difficult to return the initial investment of a particular product due to the fact that the life cycle of each product will be taken into account and withdrawing from it will affect the expected output.
                     </div>
-                </div>
-            </div>
+                );
 
-            <div class="card">
-                <div class="card-header" id="headingFive">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
-                            5. Can I visit the farm or see the products I invest in?
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseFive" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
+            panelbar.Add().Text("5. Can I visit the farm or see the products I invest in?")
+                .Content(
+                    @<div style="padding: 10px;">
                         Yes you can freely visit any of our farms or product you invest in and get the experience
                     </div>
-                </div>
-            </div>
+                );
 
-            <div class="card">
-                <div class="card-header" id="headingSix">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
-                            6. What is the maximum and minimum investment I can do?
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseSix" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
+            panelbar.Add().Text("6. What is the maximum and minimum investment I can do?")
+                .Content(
+                    @<div style="padding: 10px;">
                         You can invest in as many products as possible
                     </div>
-                </div>
-            </div>
+                );
 
-            <div class="card">
-                <div class="card-header" id="headingSeven">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseThree">
-                            7. What is my return after investment?
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseSeven" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
+            panelbar.Add().Text("7. What is my return after investment?")
+                .Content(
+                    @<div style="padding: 10px;">
                         The return is well detailed in all our products
                     </div>
-                </div>
-            </div>
+                );
 
-            <div class="card">
-                <div class="card-header" id="headingEight">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseThree">
-                            8. What method of payment is available?
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseEight" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
+            panelbar.Add().Text("8. What method of payment is available?")
+                .Content(
+                    @<div style="padding: 10px;">
                         You can use Mpesa or visa as provided in the website
                     </div>
-                </div>
-            </div>
+                );
 
-            <div class="card">
-                <div class="card-header" id="headingNine">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseThree">
-                            9. When do I get a contract?
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseNine" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
+            panelbar.Add().Text("9. When do I get a contract?")
+                .Content(
+                    @<div style="padding: 10px;">
                         You shall receive a contract within 7 days after you make the payments
                     </div>
-                </div>
-            </div>
+                );
 
-            <div class="card">
-                <div class="card-header" id="headingTen">
-                    <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseThree">
-                            10. When is the next investment cycle?
-                        </button>
-                    </h2>
-                </div>
-                <div id="collapseTen" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                    <div class="card-body">
+            panelbar.Add().Text("10. When is the next investment cycle?")
+                .Content(
+                    @<div style="padding: 10px;">
                         we usually make updates on our websites on the investment cycles available
                     </div>
-                </div>
-            </div>
+                );
 
-        </div>
-    </div>
-
+        })
+    )
 </div>
 
+<style>
+    #InvestmentOpportunitiesCard {
+        padding: 10px 5px;
+        margin-bottom: -1px;
+        min-height: 600px;
+        max-height:600px;
+        min-width:1100px;
+        overflow: auto;
+    }
+
+    .investOpp {
+        float: left;
+        position: relative;
+        width: 300px;
+        height: 600px;
+        margin: 0 5px;
+        padding: 0;
+        border: solid;
+        border-width: thin;
+        border-spacing: 2em;
+    }
+
+        .investOpp img {
+            width: 300px;
+            height: 250px;
+        }
+
+        .investOpp h5 {
+            padding-top: 1em;
+            padding-left: 1em;
+            color: #000000;
+        }
+
+        .investOpp p {
+            padding-left:1em;
+            color: #000000;
+        }
+
+        .investOpp button {
+            padding-left: 1em;
+        }
+
+    .k-listview:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+</style>
+
 @section scripts{
-    <script type="text/javascript" src="~/Scripts/carouselAnimation.js"></script>
     @*<script type="text/javascript" src="~/Scripts/typed.min.js"></script>*@
     <script type="text/javascript" src="https://cdn.bootcss.com/typed.js/1.1.4/typed.min.js"></script>
 

@@ -21,7 +21,7 @@
             @Html.LabelFor(model => model.FromDate)
         </div>
         <div class="k-edit-field">
-            @Html.Kendo().DatePickerFor(model => model.FromDate).Format("{0: dd/MM/yyyy}")
+            @Html.Kendo().DatePickerFor(model => model.FromDate).Format("{0:dd/MM/yyyy}")
             @Html.ValidationMessageFor(model => model.FromDate)
         </div>
     </div>
