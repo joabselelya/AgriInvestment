@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AgriInvestment.Core.Models
 {
-    public class Product : BaseEntity
+    public class InvestmentProduct : BaseEntity
     {
         [StringLength(20)]
         [DisplayName("Name")]
@@ -29,13 +29,11 @@ namespace AgriInvestment.Core.Models
         [ForeignKey("Category")]
         [Required(ErrorMessage = "Product category is required")]
         public int ProductCategoryId { get; set; }
-        public ProductCategory Category { get; set; }
+
+        [UIHint("InvestmentCategory")]
+        [DisplayName("Category")]
+        public InvestmentCategory InvestmentCategory { get; set; }
 
         public ICollection<InvestmentCycle> InvestmentCycles { get; set; }
-
-        public Product()
-        {
-            InvestmentPeriod = 3;
-        }
     }
 }

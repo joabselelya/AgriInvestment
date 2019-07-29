@@ -38,7 +38,12 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                        @(Html.Kendo().Button()
+                            .Name("btnLogIn")
+                            .HtmlAttributes(new { type = "submit", @class = "k-primary" })
+                            .Content("Log In")
+                        )
+                        @*<input type="submit" value="Log in" class="btn btn-default" />*@
                     </div>
                 </div>
                 <p>

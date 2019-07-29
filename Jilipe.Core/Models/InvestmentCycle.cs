@@ -11,7 +11,7 @@ namespace AgriInvestment.Core.Models
 {
     public class InvestmentCycle : BaseEntity
     {
-        [DisplayName("Starting From")]
+        [DisplayName("Start Date")]
         [Required(ErrorMessage = "Investment commencement date is required")]
         public DateTime FromDate { get; set; }
 

@@ -46,8 +46,8 @@
   <ItemGroup>
     <Compile Include="DapperORM.cs" />
     <Compile Include="investmentCycleDataSource.cs" />
-    <Compile Include="ProductCategoryDataSource.cs" />
-    <Compile Include="ProductDataSource.cs" />
+    <Compile Include="InvestmentCategoryDataSource.cs" />
+    <Compile Include="InvestmentProductDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDataSource.cs" />
   </ItemGroup>

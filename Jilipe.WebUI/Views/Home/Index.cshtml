@@ -10,16 +10,23 @@
         <div>
             <h5>#:ProductName#</h5>
             <hr />
-            <p>
-                <label>Target</label> : &nbsp #:TargetAmount# <br />
-                <label>Min</label> : &nbsp #:MinimumAmount# <br />
-                <label>Max</label> : &nbsp #:kendo.toString(MaximumAmount, "KES 0")# <br />
-                <label>From Date</label> : &nbsp #:kendo.toString(FromDate, "dd-MMM-yyyy")# <br />
-                <label>To Date</label> : &nbsp #:kendo.toString(MaturityDate, "dd-MMM-yyyy")# <br />
-                <label>Period</label> : &nbsp #:kendo.toString(InvestmentPeriod, "0 Months")# <br />
-                <label>Returns</label> : &nbsp #:kendo.toString(RoI, "p0")# <br />
-            </p>
-            <button class="k-button" type="button" style="padding-left:1em">Invest</button>
+            <div class="table">
+                <div class="row">
+                    <div class="col-md-2 cardDetailCol" style="font-weight:bold">Target</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(TargetAmount, "KES 0")# </div>
+                    <div class="col-md-2 cardDetailCol">Min</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(MinimumAmount, "KES 0")# </div>
+                    <div class="col-md-2 cardDetailCol">Max</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(MaximumAmount, "KES 0")# </div>
+                    <div class="col-md-2 cardDetailCol">From</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(FromDate, "dd-MMM-yyyy")# </div>
+                    <div class="col-md-2 cardDetailCol">Period</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(InvestmentPeriod, "0 Months")# </div>
+                    <div class="col-md-2 cardDetailCol">Maturity</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(MaturityDate, "dd-MMM-yyyy")# </div>
+                    <div class="col-md-2 cardDetailCol">Returns</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(RoI, "p0")# </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7"></div>
+                    <div class="col-md-3 cardDetailCommand" >
+                        <button type="submit">Invest</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </script>
@@ -65,23 +72,26 @@
 <div class="row">
     <div class="col-md-4">
         @(Html.Kendo().Button()
-            .Name("btnGetStarted")
-            .HtmlAttributes(new { type = "button", @class = "k-primary" })
-            .Content("Learn More &raquo;")
+                    .Name("btnGetStarted")
+                    .HtmlAttributes(new { type = "button", @class = "k-primary" })
+                    .Events(ev => ev.Click("onClick_GetStarted"))
+                    .Content("Learn More &raquo;")
         )
     </div>
     <div class="col-md-4">
         @(Html.Kendo().Button()
-            .Name("btnWideOpportunities")
-            .HtmlAttributes(new { type = "button", @class = "k-primary" })
-            .Content("Learn More &raquo;")
+                    .Name("btnWideOpportunities")
+                    .HtmlAttributes(new { type = "button", @class = "k-primary" })
+                    .Events(ev => ev.Click("onClick_WideOpportunities"))
+                    .Content("Learn More &raquo;")
         )
     </div>
     <div class="col-md-4">
         @(Html.Kendo().Button()
-            .Name("btnAssuredReturns")
-            .HtmlAttributes(new { type = "button", @class = "k-primary" })
-            .Content("Learn More &raquo;")
+                    .Name("btnAssuredReturns")
+                    .HtmlAttributes(new { type = "button", @class = "k-primary" })
+                    .Events(ev => ev.Click("onClick_AssuredReturns"))
+                    .Content("Learn More &raquo;")
         )
     </div>
 </div>
@@ -93,12 +103,12 @@
                     .Name("InvestmentOpportunitiesCard")
                     .TagName("div")
                     .ClientTemplateId("template")
+                    //.Pageable()
                     .DataSource(dataSource =>
                     {
                         dataSource.Read(read => read.Action("InvestmentCycleCard_Read", "Home"));
                         dataSource.PageSize(3);
                     })
-                    .Scrollable(ListViewScrollableMode.Endless)
         )
     </div>
 </div>
@@ -107,107 +117,112 @@
 
     <h2 class="col-md-12" style="text-align:center; text-decoration-color:white">FAQs</h2>
     @(Html.Kendo().PanelBar()
-        .Name("panelbar")
-        .Items(panelbar =>
-        {
-            panelbar.Add().Text("1. How do I join?")
-                .Content(
-                    @<div style="padding: 10px;">
-                        click on be an investor and fill the registration form provided
-                    </div>
-                );
+                .Name("panelbar")
+                .Items(panelbar =>
+                {
+                    panelbar.Add().Text("1. How do I join?")
+                        .Content(
+                            @<div style="padding: 10px; background-color:lightgrey;">
+                                click on be an investor and fill the registration form provided
+                            </div>
+                                );
 
-            panelbar.Add().Text("2. Is there investment insurance?")
-                .Content(
-                    @<div style="padding: 10px;">
-                            All Jilipe investment products are insured and this ensures in the event of an unplanned eventuality that can affect the product then we are able to get the initial investment back note this doesn’t cover the return on investment.
-                    </div>
-                );
+                            panelbar.Add().Text("2. Is there investment insurance?")
+                                .Content(
+                                    @<div style="padding: 10px; background-color:lightgrey;">
+                                        All Jilipe investment products are insured and this ensures in the event of an unplanned eventuality that can affect the product then we are able to get the initial investment back note this doesn’t cover the return on investment.
+                                    </div>
+                                        );
 
-            panelbar.Add().Text("3. What's the duration of my investment?")
-                .Content(
-                    @<div style="padding: 10px;">
-                        This will depend on the product you choose which is well detailed on the product information
-                    </div>
-                );
+                                    panelbar.Add().Text("3. What's the duration of my investment?")
+                                        .Content(
+                                            @<div style="padding: 10px; background-color:lightgrey;">
+                                                This will depend on the product you choose which is well detailed on the product information
+                                            </div>
+                                                );
 
-            panelbar.Add().Text("4. Can I terminate investment befoe due date?")
-                .Content(
-                    @<div style="padding: 10px;">
-                        Once invested it will be difficult to return the initial investment of a particular product due to the fact that the life cycle of each product will be taken into account and withdrawing from it will affect the expected output.
-                    </div>
-                );
+                                            panelbar.Add().Text("4. Can I terminate investment befoe due date?")
+                                                .Content(
+                                                    @<div style="padding: 10px; background-color:lightgrey;">
+                                                        Once invested it will be difficult to return the initial investment of a particular product due to the fact that the life cycle of each product will be taken into account and withdrawing from it will affect the expected output.
+                                                    </div>
+                                                        );
 
-            panelbar.Add().Text("5. Can I visit the farm or see the products I invest in?")
-                .Content(
-                    @<div style="padding: 10px;">
-                        Yes you can freely visit any of our farms or product you invest in and get the experience
-                    </div>
-                );
+                                                    panelbar.Add().Text("5. Can I visit the farm or see the products I invest in?")
+                                                        .Content(
+                                                            @<div style="padding: 10px; background-color:lightgrey;">
+                                                                Yes you can freely visit any of our farms or product you invest in and get the experience
+                                                            </div>
+                                                                );
 
-            panelbar.Add().Text("6. What is the maximum and minimum investment I can do?")
-                .Content(
-                    @<div style="padding: 10px;">
-                        You can invest in as many products as possible
-                    </div>
-                );
+                                                            panelbar.Add().Text("6. What is the maximum and minimum investment I can do?")
+                                                                .Content(
+                                                                    @<div style="padding: 10px; background-color:lightgrey;">
+                                                                        You can invest in as many products as possible
+                                                                    </div>
+                                                                        );
 
-            panelbar.Add().Text("7. What is my return after investment?")
-                .Content(
-                    @<div style="padding: 10px;">
-                        The return is well detailed in all our products
-                    </div>
-                );
+                                                                    panelbar.Add().Text("7. What is my return after investment?")
+                                                                        .Content(
+                                                                            @<div style="padding: 10px; background-color:lightgrey;">
+                                                                                The return is well detailed in all our products
+                                                                            </div>
+                                                                                );
 
-            panelbar.Add().Text("8. What method of payment is available?")
-                .Content(
-                    @<div style="padding: 10px;">
-                        You can use Mpesa or visa as provided in the website
-                    </div>
-                );
+                                                                            panelbar.Add().Text("8. What method of payment is available?")
+                                                                                .Content(
+                                                                                    @<div style="padding: 10px; background-color:lightgrey;">
+                                                                                        You can use Mpesa or visa as provided in the website
+                                                                                    </div>
+                                                                                        );
 
-            panelbar.Add().Text("9. When do I get a contract?")
-                .Content(
-                    @<div style="padding: 10px;">
-                        You shall receive a contract within 7 days after you make the payments
-                    </div>
-                );
+                                                                                    panelbar.Add().Text("9. When do I get a contract?")
+                                                                                        .Content(
+                                                                                            @<div style="padding: 10px; background-color:lightgrey;">
+                                                                                                You shall receive a contract within 7 days after you make the payments
+                                                                                            </div>
+                                                                                                );
 
-            panelbar.Add().Text("10. When is the next investment cycle?")
-                .Content(
-                    @<div style="padding: 10px;">
-                        we usually make updates on our websites on the investment cycles available
-                    </div>
-                );
+                                                                                            panelbar.Add().Text("10. When is the next investment cycle?")
+                                                                                                .Content(
+                                                                                                    @<div style="padding: 10px; background-color:lightgrey;">
+                                                                                                        we usually make updates on our websites on the investment cycles available
+                                                                                                    </div>
+                                                                                                        );
 
-        })
+                                                                                                })
     )
 </div>
 
 <style>
     #InvestmentOpportunitiesCard {
+        display: flex;
+        flex-wrap: wrap;
         padding: 10px 5px;
         margin-bottom: -1px;
-        min-height: 600px;
-        max-height:600px;
-        min-width:1100px;
-        overflow: auto;
+        max-height: 550px;
+        min-width: 1150px;
+        overflow: hidden;
+        border: none;
     }
 
     .investOpp {
+        display: flex;
+        flex-wrap: wrap;
         float: left;
         position: relative;
-        width: 300px;
-        height: 600px;
-        margin: 0 5px;
+        width: 350px;
+        height: 540px;
+        margin: 0 13px;
         padding: 0;
         border: solid;
         border-width: thin;
         border-spacing: 2em;
+        box-shadow: 7px 10px 12px -5px rgba(0,0,0,0.56);
     }
 
         .investOpp img {
-            width: 300px;
+            width: 350px;
             height: 250px;
         }
 
@@ -217,18 +232,27 @@
             color: #000000;
         }
 
-        .investOpp p {
-            padding-left:1em;
-            color: #000000;
-        }
-
-        .investOpp button {
+        .investOpp .row {
             padding-left: 1em;
         }
 
+            .investOpp .row .cardDetailCol {
+                color: gray;
+                font-weight: bold;
+            }
+
+            .investOpp .row .cardDetailCommand {
+                padding-top: 13px;
+            }
+
+            .investOpp button {
+                width: 58px;
+                height: 28px;
+            }
+
     .k-listview:after {
         content: ".";
-        display: block;
+        display: flex;
         height: 0;
         clear: both;
         visibility: hidden;
@@ -240,5 +264,18 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/typed.js/1.1.4/typed.min.js"></script>
 
     <script type="text/javascript" src="~/Scripts/typingAnimation.js"></script>
+    <script type="text/javascript">
+        function onClick_GetStarted(e) {
+            window.location.href = '@Url.Action("GetStarted", "Home")';
+        }
+        function onClick_WideOpportunities(e) {
+            window.location.href = '@Url.Action("InvestmentOpportunities", "Home")';
+        }
+        function onClick_AssuredReturns(e) {
+            window.location.href = '@Url.Action("AssuredReturns", "Home")';
+        }
+    </script>
+
+
 }
 

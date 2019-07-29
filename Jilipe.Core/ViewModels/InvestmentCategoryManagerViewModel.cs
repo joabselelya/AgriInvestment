@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Jilipe.Core.ViewModels
 {
-    public class ProductCategoryManagerViewModel : ProductCategory
+    public class InvestmentCategoryManagerViewModel : InvestmentCategory
     {
         [DisplayName("Products")]
-        public int ProductsCount { get; set; }
+        public int InvestmentProductsCount { get; set; }
     }
 }

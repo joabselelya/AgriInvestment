@@ -6,16 +6,28 @@
         @Html.AntiForgeryToken()
 
         <ul class="navbar-nav navbar-right">
-            <li class="nav-item">
+            @*<li class="nav-item">
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+            </li>*@
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="myAccDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
+                <div class="dropdown-menu" aria-labelledby="myAccDropdownMenuLink">
+                    @Html.ActionLink("Profile", "Index", "Profile", null, htmlAttributes: new { @class = "dropdown-item" })
+                    @Html.ActionLink("Change Password", "ChangePassword", "Manage", null, htmlAttributes: new { @class = "dropdown-item" })
+                    @Html.ActionLink("Investments", "Investments", "Profile", null, htmlAttributes: new { @class = "dropdown-item" })
+                    @Html.ActionLink("Wish List", "Wishlist", "Profile", null, htmlAttributes: new { @class = "dropdown-item" })
+                    <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item">Log off</a>
+                </div>
             </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @Html.ActionLink("Product Setup", "Index", "ProductSetup", null, htmlAttributes: new { @class = "dropdown-item" })
-                    </div>
-                </li>
-            <li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log off</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Setup</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    @Html.ActionLink("Investment Category", "Index", "InvestmentCategory", null, htmlAttributes: new { @class = "dropdown-item" })
+                    @Html.ActionLink("Investment Product", "Index", "InvestmentProduct", null, htmlAttributes: new { @class = "dropdown-item" })
+                    @Html.ActionLink("Investment Cycle", "Index", "InvestmentCycle", null, htmlAttributes: new { @class = "dropdown-item" })
+                </div>
+            </li>
+            @*<li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Log off</a></li>*@
         </ul>
     }
 }

@@ -1,15 +1,15 @@
-﻿@model Jilipe.Core.ViewModels.ProductCategoryManagerViewModel
+﻿@model Jilipe.Core.ViewModels.InvestmentCategoryManagerViewModel
 
 <div class="k-edit-form-container">
     @Html.HiddenFor(model => model.Id)
-    @Html.HiddenFor(model => model.ProductsCount)
+    @Html.HiddenFor(model => model.InvestmentProductsCount)
 
     <div>
         <div class="k-edit-label">
             @Html.LabelFor(model => model.Name)
         </div>
         <div class="k-edit-field">
-            @Html.EditorFor(model => model.Name)
+            @Html.Kendo().TextBoxFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
         </div>
     </div>
@@ -18,7 +18,7 @@
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="k-edit-field">
-            @Html.EditorFor(model => model.Description)
+            @Html.Kendo().TextBoxFor(model => model.Description)
             @Html.ValidationMessageFor(model => model.Description)
         </div>
     </div>

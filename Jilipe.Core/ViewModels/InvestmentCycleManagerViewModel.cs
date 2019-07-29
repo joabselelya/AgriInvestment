@@ -14,7 +14,7 @@ namespace AgriInvestment.Core.ViewModels
         public DateTime MaturityDate { get; set; }
         [DisplayName("Months")]
         public byte InvestmentPeriod { get; set; }
-        public Product Product { get; set; }
-        public IEnumerable<Product> Products { get; set; }
+        public InvestmentProduct InvestmentProduct { get; set; }
+        public IEnumerable<InvestmentProduct> InvestmentProducts { get; set; }
     }
 }

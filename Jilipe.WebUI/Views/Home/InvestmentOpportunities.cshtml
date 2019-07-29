@@ -1,0 +1,117 @@
+﻿@model IEnumerable<AgriInvestment.Core.Models.InvestmentCycle>
+
+@{
+    ViewBag.Title = "Investment Opportunities";
+}
+
+<h4>@ViewBag.Title.</h4>
+<h4>@ViewBag.Message</h4>
+
+<script type="text/x-kendo-tmpl" id="template">
+    <div class="investOpp">
+        <img src="@Url.Content("~/Images/Products/")#:ImageFile#" alt="#:ProductName# image" />
+        <div>
+            <h5>#:ProductName#</h5>
+            <hr />
+            <div class="table">
+                <div class="row">
+                    <div class="col-md-2 cardDetailCol" style="font-weight:bold">Target</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(TargetAmount, "KES 0")# </div>
+                    <div class="col-md-2 cardDetailCol">Min</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(MinimumAmount, "KES 0")# </div>
+                    <div class="col-md-2 cardDetailCol">Max</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(MaximumAmount, "KES 0")# </div>
+                    <div class="col-md-2 cardDetailCol">From</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(FromDate, "dd-MMM-yyyy")# </div>
+                    <div class="col-md-2 cardDetailCol">Period</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(InvestmentPeriod, "0 Months")# </div>
+                    <div class="col-md-2 cardDetailCol">Maturity</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(MaturityDate, "dd-MMM-yyyy")# </div>
+                    <div class="col-md-2 cardDetailCol">Returns</div><div class="col-md-1">:</div><div class="col-md-4">#:kendo.toString(RoI, "p0")# </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7"></div>
+                    <div class="col-md-3 cardDetailCommand">
+                        <button type="submit">Invest</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="row">
+    <div class="demo-section k-content wide">
+        @(Html.Kendo().ListView<AgriInvestment.Core.ViewModels.InvestmentCycleManagerViewModel>()
+            .Name("InvestmentOpportunitiesCard")
+            .TagName("div")
+            .ClientTemplateId("template")
+            //.Pageable()
+            .Scrollable()
+            .DataSource(dataSource =>
+            {
+                dataSource.Read(read => read.Action("InvestmentCycleCard_Read", "Home"));                
+            })
+        )
+    </div>
+</div>
+
+
+<style>
+    #InvestmentOpportunitiesCard {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px 5px;
+        margin-bottom: -1px;
+        max-height: 550px;
+        min-width: 1150px;
+        overflow: hidden;
+        border: none;
+    }
+
+    .investOpp {
+        display: flex;
+        flex-wrap: wrap;
+        float: left;
+        position: relative;
+        width: 350px;
+        height: 540px;
+        margin: 0 13px 27px;
+        padding: 0;
+        border: solid;
+        border-width: thin;
+        border-spacing: 2em;
+        box-shadow: 7px 10px 12px -5px rgba(0,0,0,0.56);
+    }
+
+        .investOpp img {
+            width: 350px;
+            height: 250px;
+        }
+
+        .investOpp h5 {
+            padding-top: 1em;
+            padding-left: 1em;
+            color: #000000;
+        }
+
+        .investOpp .row {
+            padding-left: 1em;
+        }
+
+            .investOpp .row .cardDetailCol {
+                color: gray;
+                font-weight: bold;
+            }
+
+            .investOpp .row .cardDetailCommand {
+                padding-top: 13px;
+            }
+
+        .investOpp button {
+            width: 59px;
+            height: 30px;
+        }
+
+    .k-listview:after {
+        content: ".";
+        display: flex;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+</style>

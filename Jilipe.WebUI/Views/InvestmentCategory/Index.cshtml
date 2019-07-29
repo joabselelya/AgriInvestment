@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Investment Category Setup";
+}
+
+<h4>@ViewBag.Title.</h4>
+<h4>@ViewBag.Message</h4>
+
+<script src="@Url.Content("~/Scripts/cultures/kendo.culture.en-GB.min.js")"></script>
+<script type="text/javascript">
+    kendo.culture("en-GB");
+
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+
+</script>
+
+@(Html.Kendo().Grid<Jilipe.Core.ViewModels.InvestmentCategoryManagerViewModel>()
+    .Name("grdInvestmentCategories")
+    .Columns(columns =>
+    {
+        //columns.Bound(p => p.Id).Width(40);
+        columns.Bound(p => p.Name).Width(250);
+        columns.Bound(p => p.Description).Width(520);
+        //columns.Bound(p => p.ProductsCount).Width(70);
+        columns.Command(command => { command.Edit().Text(" "); command.Destroy().Text(" "); }).Width(140);
+    })
+    .ToolBar(toolbar => toolbar.Create().Text("Add Investment Category"))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("Template_InvestmentCategory"))
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(10)
+        .Events(events => events
+            .Error("error_handler")
+        )
+        .Model(model => { model.Id(p => p.Id); })
+        .Create(update => update.Action("EditingInvestmentCategoryPopup_Create", "InvestmentCategory"))
+        .Read(read => read.Action("EditingInvestmentCategoryPopup_Read", "InvestmentCategory"))
+        .Update(update => update.Action("EditingInvestmentCategoryPopup_Update", "InvestmentCategory"))
+        .Destroy(update => update.Action("EditingInvestmentCategoryPopup_Destroy", "InvestmentCategory"))
+    )
+)

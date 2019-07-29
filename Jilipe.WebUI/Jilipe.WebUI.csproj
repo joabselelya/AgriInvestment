@@ -261,8 +261,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvestmentCycleController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ProductSetupController.cs" />
+    <Compile Include="Controllers\InvestmentCategoryController.cs" />
+    <Compile Include="Controllers\InvestmentProductController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -400,12 +403,21 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\ProductSetup\Index.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Template_ProductCategory.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Template_Product.cshtml" />
+    <Content Include="Views\InvestmentCategory\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Template_InvestmentCategory.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Template_InvestmentProduct.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Template_InvestmentCycle.cshtml" />
     <Content Include="Views\Home\Legal.cshtml" />
     <Content Include="Views\Home\CSR.cshtml" />
+    <Content Include="Views\InvestmentCycle\Index.cshtml" />
+    <Content Include="Views\InvestmentProduct\Index.cshtml" />
+    <Content Include="Views\Profile\Investments.cshtml" />
+    <Content Include="Views\Profile\Wishlist.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\InvestmentCategory.cshtml" />
+    <Content Include="Views\Home\InvestmentOpportunities.cshtml" />
+    <Content Include="Views\Home\HowItWorks.cshtml" />
+    <Content Include="Views\Home\AssuredReturns.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -47,6 +47,21 @@ namespace AgriInvestment.WebUI.Controllers
             return View();
         }
 
+        public ActionResult HowItWorks()
+        {
+            return View();
+        }
+
+        public ActionResult InvestmentOpportunities()
+        {
+            return View();
+        }
+
+        public ActionResult AssuredReturns()
+        {
+            return View();
+        }
+
         public ActionResult InvestmentCycleCard_Read([DataSourceRequest] DataSourceRequest request)
         {
             return Json(contextInvestmentCycle.GetAll().ToDataSourceResult(request));

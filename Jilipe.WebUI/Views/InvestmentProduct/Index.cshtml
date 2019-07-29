@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AgriInvestment.Core.Models.InvestmentProduct>
+
+@{
+    ViewBag.Title = "Investment Product Setup";
+}
+
+<h4>@ViewBag.Title.</h4>
+<h4>@ViewBag.Message</h4>
+
+<script src="@Url.Content("~/Scripts/cultures/kendo.culture.en-GB.min.js")"></script>
+<script type="text/javascript">
+    kendo.culture("en-GB");
+
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+
+</script>
+
+@(Html.Kendo().Grid<AgriInvestment.Core.ViewModels.InvestmentProductManagerViewModel>()
+    .Name("grdInvestmentProducts")
+    .Columns(columns =>
+    {
+        //columns.Bound(p => p.Id).Width(40);
+        columns.Bound(p => p.Name).Width(180);
+        columns.Bound(p => p.Description).Width(350);
+        columns.Bound(p => p.InvestmentCategory).ClientTemplate("#=InvestmentCategory.Name#").Width(150);
+        columns.Bound(p => p.InvestmentPeriod).Width(90);
+        //columns.Bound(p => p.InvestmentsCount).Width(60);
+        columns.Command(command => { command.Edit().Text(" "); command.Destroy().Text(" "); }).Width(140);
+    })
+    .ToolBar(toolbar => toolbar.Create().Text("Add Investment Product"))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("Template_InvestmentProduct"))
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(10)
+        .Events(events => events
+            .Error("error_handler")
+        )
+        .Model(model => model.Id(p => p.Id))
+        .Create(update => update.Action("EditingInvestmentProductPopup_Create", "InvestmentProduct"))
+        .Read(read => read.Action("EditingInvestmentProductPopup_Read", "InvestmentProduct"))
+        .Update(update => update.Action("EditingInvestmentProductPopup_Update", "InvestmentProduct"))
+        .Destroy(update => update.Action("EditingInvestmentProductPopup_Destroy", "InvestmentProduct"))
+    )
+)

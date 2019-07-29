@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AgriInvestment.Core.Models
 {
-    public class ProductCategory : BaseEntity
+    public class InvestmentCategory : BaseEntity
     {
         [StringLength(20)]
         [DisplayName("Name")]
@@ -19,6 +19,6 @@ namespace AgriInvestment.Core.Models
         [Required(ErrorMessage = "Product category description is required")]
         public string Description { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public ICollection<InvestmentProduct> InvestmentProducts { get; set; }
     }
 }

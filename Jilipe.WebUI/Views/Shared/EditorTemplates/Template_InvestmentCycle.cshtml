@@ -11,7 +11,7 @@
             @(Html.Kendo().DropDownListFor(model => model.ProductId)
                 .DataValueField("Id")
                 .DataTextField("Name")
-                .BindTo((List<AgriInvestment.Core.ViewModels.ProductManagerViewModel>)ViewData["Products"])
+                .BindTo((List<AgriInvestment.Core.ViewModels.InvestmentProductManagerViewModel>)ViewData["InvestmentProducts"])
             )
             @Html.ValidationMessageFor(model => model.ProductId)
         </div>
@@ -30,7 +30,7 @@
             @Html.LabelFor(model => model.TargetAmount)
         </div>
         <div class="k-edit-field">
-            @Html.EditorFor(model => model.TargetAmount)
+            @Html.Kendo().NumericTextBoxFor(model => model.TargetAmount).Format("KES ###,###,###,###.00")
             @Html.ValidationMessageFor(model => model.TargetAmount)
         </div>
     </div>
@@ -39,7 +39,7 @@
             @Html.LabelFor(model => model.MinimumAmount)
         </div>
         <div class="k-edit-field">
-            @Html.EditorFor(model => model.MinimumAmount)
+            @Html.Kendo().NumericTextBoxFor(model => model.MinimumAmount).Format("KES ###,###,###,###.00")
             @Html.ValidationMessageFor(model => model.MinimumAmount)
         </div>
     </div>
@@ -48,7 +48,7 @@
             @Html.LabelFor(model => model.MaximumAmount)
         </div>
         <div class="k-edit-field">
-            @Html.EditorFor(model => model.MaximumAmount)
+            @Html.Kendo().NumericTextBoxFor(model => model.MaximumAmount).Format("KES ###,###,###,###.00")
             @Html.ValidationMessageFor(model => model.MaximumAmount)
         </div>
     </div>

@@ -8,13 +8,19 @@ using System.Threading.Tasks;
 
 namespace AgriInvestment.Core.ViewModels
 {
-    public class ProductManagerViewModel : Product
+    public class InvestmentProductManagerViewModel : InvestmentProduct
     {
         [DisplayName("Category")]
         public string ProductCategoryName { get; set; }
+
         [DisplayName("Investments")]
         public int InvestmentsCount { get; set; }
-        public ProductCategory ProductCategory { get; set; }
-        public IEnumerable<ProductCategory> ProductCategories { get; set; }
+
+        public IEnumerable<InvestmentCategory> InvestmentCategories { get; set; }
+
+        public InvestmentProductManagerViewModel()
+        {
+            InvestmentCategory = new InvestmentCategory();
+        }
     }
 }

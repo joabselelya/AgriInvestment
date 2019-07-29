@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AgriInvestment.Core.Models.InvestmentCycle>
+
+@{
+    ViewBag.Title = "Investment Cycle Setup";
+}
+
+<h4>@ViewBag.Title.</h4>
+<h4>@ViewBag.Message</h4>
+
+<script src="@Url.Content("~/Scripts/cultures/kendo.culture.en-GB.min.js")"></script>
+<script type="text/javascript">
+    kendo.culture("en-GB");
+
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+
+</script>
+
+@(Html.Kendo().Grid<AgriInvestment.Core.ViewModels.InvestmentCycleManagerViewModel>()
+    .Name("grdInvestmentCycles")
+    .Columns(columns =>
+    {
+        //columns.Bound(p => p.Id).Width(40);
+        columns.Bound(p => p.ProductName).Width(250);
+        columns.Bound(p => p.FromDate).Width(130).Format("{0:dd-MMM-yyyy}");
+        columns.Bound(p => p.TargetAmount).Width(130);
+        columns.Bound(p => p.MinimumAmount).Width(130);
+        columns.Bound(p => p.MaximumAmount).Width(130);
+        columns.Command(command => { command.Edit().Text(" "); command.Destroy().Text(" "); }).Width(140);
+    })
+    .ToolBar(toolbar => toolbar.Create().Text("Add Investment Cycle"))
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("Template_InvestmentCycle"))
+    .Pageable()
+    .Sortable()
+    .Scrollable()
+    .Filterable()
+    .HtmlAttributes(new { style = "height:550px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(10)
+        .Events(events => events
+            .Error("error_handler")
+        )
+        .Model(model => model.Id(p => p.Id))
+        .Create(update => update.Action("EditingInvestmentCyclePopup_Create", "InvestmentCycle"))
+        .Read(read => read.Action("EditingInvestmentCyclePopup_Read", "InvestmentCycle"))
+        .Update(update => update.Action("EditingInvestmentCyclePopup_Update", "InvestmentCycle"))
+        .Destroy(update => update.Action("EditingInvestmentCyclePopup_Destroy", "InvestmentCycle"))
+    )
+)

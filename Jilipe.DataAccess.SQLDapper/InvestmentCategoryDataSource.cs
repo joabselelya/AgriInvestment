@@ -10,29 +10,29 @@ using System.Threading.Tasks;
 
 namespace Jilipe.DataAccess.SQLDapper
 {
-    public class ProductCategoryDataSource
+    public class InvestmentCategoryDataSource
     {
-        public List<ProductCategoryManagerViewModel> GetAll()
+        public List<InvestmentCategoryManagerViewModel> GetAll()
         {
-            return (List<ProductCategoryManagerViewModel>)DapperORM.ReturnList<ProductCategoryManagerViewModel>("GetProductCategories");
+            return (List<InvestmentCategoryManagerViewModel>)DapperORM.ReturnList<InvestmentCategoryManagerViewModel>("GetProductCategories");
         }
 
-        public ProductCategory GetById(int Id)
+        public InvestmentCategory GetById(int Id)
         {
             DynamicParameters spParams = new DynamicParameters();
 
             spParams.Add("Id", Id);
 
-            return (ProductCategory)DapperORM.ReturnSingle<ProductCategory>("GetProductCategory", spParams);
+            return (InvestmentCategory)DapperORM.ReturnSingle<InvestmentCategory>("GetProductCategory", spParams);
         }
 
-        public void AddEdit(ProductCategory productCategory, User user)
+        public void AddEdit(InvestmentCategory investmentCategory, User user)
         {
             DynamicParameters spParams = new DynamicParameters();
 
-            spParams.Add("Id", productCategory.Id);
-            spParams.Add("Name", productCategory.Name);
-            spParams.Add("Description", productCategory.Description);
+            spParams.Add("Id", investmentCategory.Id);
+            spParams.Add("Name", investmentCategory.Name);
+            spParams.Add("Description", investmentCategory.Description);
             spParams.Add("UserId", user.Id);
 
             DapperORM.ExecuteWithoutReturn("AddEditProductCategory", spParams);
