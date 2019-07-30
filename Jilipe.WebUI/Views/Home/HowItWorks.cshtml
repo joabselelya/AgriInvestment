@@ -6,7 +6,100 @@
 <h4>@ViewBag.Title.</h4>
 <h4>@ViewBag.Message</h4>
 
-<div style="height:550px; overflow-y:auto">
+<div class="row" style="height:600px; overflow-y:auto">
+    <div class="intro col-md-12">
+        Getting started is <em>simple</em> and <em>easy</em>. Simply follow the <strong><em><label id="lblRISE"></label></em></strong> steps to rise your agri-business investments!
+    </div>
 
+    <div class="col-md-10">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-register" role="tabpanel" aria-labelledby="v-pills-register-tab">
+                <img class="img-fluid" src="~/Images/HIW_Register.png" alt="1. Register" />
+                <div class="tab-pane-narration">
+                    <p><strong>1. Register</strong></p>
+                    <p>To invest in any of the opportunities offered on the Jilipe platform, one needs to have an operating account. <br />
+                       Follow the <em>@Html.ActionLink("Register link", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</em> to open an account with us TODAY! It's <em>fast</em> and <em>easy</em>!
+                    </p>
+                </div>                
+            </div>
+            <div class="tab-pane fade" id="v-pills-identify" role="tabpanel" aria-labelledby="v-pills-identify-tab">
+                <img class="img-fluid" src="~/Images/HIW_Identify.png" alt="2. Identify" />
+                <div class="tab-pane-narration">
+                    <p><strong>2. Identify</strong></p>
+                    <p>
+                        We purposely curate a diversified set of opportunities to cater for the <em>short</em>, <em>medium</em> and <em>long term</em> investments.
+                        In addition, we divide huge opportunities into multiple investment slots to lower the high capital barriers to entry associated with large scale farming.
+                        As an investor you are therefore able to spread a limited fund to multiple opportunities while at the same time benefit from the high returns associated with the economies of scale in large-scale farming. 
+                        Moreover, investing in Jilipe platform greatly impacts the agricultural sector and the millions of lives affected, both directly and indirectly, by empowering the local farmer with affordable financing and the expertise to thrive in the practise.
+                        <em>It's a win for everybody</em>! <br />
+                        Check out our <em>@Html.ActionLink("latest investment opportunities page", "InvestmentOpportunities", "Home", routeValues: null, htmlAttributes: new { id = "assuredReturnsLink" })</em> to seize the moment!<br />
+                    </p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-spend" role="tabpanel" aria-labelledby="v-pills-spend-tab">
+                <img class="img-fluid" src="~/Images/HIW_Spend.png" alt="3. Spend" />
+                <div class="tab-pane-narration">
+                    <p><strong>3. Spend</strong></p>
+                    <p>
+                        Investing in any of the opportunities is <em>easy</em> and <em>most convenient</em>. We support a variety of popular mobile money platforms integration to deliver utmost convenience.
+                        First, the investor loads funds into his/her account on the Jilipe platform before investing upto an equivalent amount in any of the available opportunities.
+                        With <em>acknowledgement</em> and <em>confirmation</em> on every command, rest assured your funds are where you intend them to be! <br />
+                        Follow the <em>@Html.ActionLink("How do I invest in an opportunity FAQ", "Index", "Home", null, null, "FAQ_HowToInvest", routeValues: null, htmlAttributes: new { id = "registerLink" })</em> to open an account with us TODAY! It's <em>fast</em> and <em>easy</em>!
+                    </p>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-earn" role="tabpanel" aria-labelledby="v-pills-earn-tab">
+                <img class="img-fluid" src="~/Images/HIW_Earn.png" alt="4. Earn" />
+                <div class="tab-pane-narration">
+                    <p><strong>4. Earn</strong></p>
+                    <p>
+                        The best part of any investment is <em>Payout</em> and it doesn't get better than this.
+                        First, we employ strategies to ensure we deliver on the promise of high returns while at the same time assure that we do not loose any investment funds in any eventualities.
+                        For more information on how we ensure and assure your return on investment, follow the <em>@Html.ActionLink("Assured Returns link", "AssuredReturns", "Home", routeValues: null, htmlAttributes: new { id = "assuredReturnsLink" })</em>.
+                        Secondly, we make the payout <em>easy</em> and <em>most convenient</em>. Upon maturity, the agreed return on investment is automatically loaded to respective investor's Jilipe accounts together with their investment capital.
+                        From this account, the investor can choose to withdraw to his/her mobile money platform or grow the fund futher by investing in another opportunity on the Jilipe platform. Whatever you decide, your money is fully accessible to you!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-register-tab" data-toggle="pill" href="#v-pills-register" role="tab" aria-controls="v-pills-register" aria-selected="true"><strong>R</strong>egister</a>
+            <a class="nav-link" id="v-pills-identify-tab" data-toggle="pill" href="#v-pills-identify" role="tab" aria-controls="v-pills-identify" aria-selected="false"><strong>I</strong>dentify</a>
+            <a class="nav-link" id="v-pills-spend-tab" data-toggle="pill" href="#v-pills-spend" role="tab" aria-controls="v-pills-spend" aria-selected="false"><strong>S</strong>pend</a>
+            <a class="nav-link" id="v-pills-earn-tab" data-toggle="pill" href="#v-pills-earn" role="tab" aria-controls="v-pills-earn" aria-selected="false"><strong>E</strong>arn</a>
+        </div>
+    </div>
 </div>
 
+<style>
+    .intro {
+        height: 50px;
+    }
+
+    .tab-content img {
+        width: 600px;
+    }
+
+    .tab-content .tab-pane-narration {
+        padding-top: 5px;
+        height: 231px;
+        text-align:justify;
+    }
+
+    .nav-pills .nav-link {
+        color: darkgrey;
+    }
+
+        .nav-pills .nav-link .active {
+            background-color: olivedrab;
+            border: 1px solid yellow;
+            color: white;
+        }
+</style>
+
+<script type="text/javascript">
+
+
+</script>

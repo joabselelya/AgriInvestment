@@ -299,6 +299,10 @@
     <Content Include="Images\family1.jpg" />
     <Content Include="Images\farming-investment.jpg" />
     <Content Include="Images\Guarantee.jpg" />
+    <Content Include="Images\HIW_Earn.png" />
+    <Content Include="Images\HIW_Identify.png" />
+    <Content Include="Images\HIW_Register.png" />
+    <Content Include="Images\HIW_Spend.png" />
     <Content Include="Images\invest1.jpg" />
     <Content Include="Images\invest2.jpg" />
     <Content Include="Images\jilipe.png" />
