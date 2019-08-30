@@ -44,6 +44,7 @@ namespace Jilipe.WebUI.Controllers
             {
                 contextInvestmentProduct.AddEdit(investmentProductViewModel, user);
             }
+            investmentProductViewModel.InvestmentCategory.Id = investmentProductViewModel.ProductCategoryId;
             return Json(new[] { investmentProductViewModel }.ToDataSourceResult(request, ModelState));
         }
 

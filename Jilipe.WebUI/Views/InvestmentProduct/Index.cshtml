@@ -34,7 +34,8 @@
         //columns.Bound(p => p.Id).Width(40);
         columns.Bound(p => p.Name).Width(180);
         columns.Bound(p => p.Description).Width(350);
-        columns.Bound(p => p.InvestmentCategory).ClientTemplate("#=InvestmentCategory.Name#").Width(150);
+        //columns.Bound(p => p.ProductCategoryId).ClientTemplate("#=InvestmentCategory.Name#").Width(150);
+        columns.Bound(p => p.ProductCategoryName).Width(150);
         columns.Bound(p => p.InvestmentPeriod).Width(90);
         //columns.Bound(p => p.InvestmentsCount).Width(60);
         columns.Command(command => { command.Edit().Text(" "); command.Destroy().Text(" "); }).Width(140);
