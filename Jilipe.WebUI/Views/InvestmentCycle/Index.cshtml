@@ -32,12 +32,19 @@
     .Columns(columns =>
     {
         //columns.Bound(p => p.Id).Width(40);
-        columns.Bound(p => p.ProductName).Width(250);
+
+        columns.Bound(p => p.ProductName)
+        .ClientTemplate(
+            @"<div class='product-photo' 
+                    style='background-image: url(" + @Url.Content("~/Images/Products/#:ImageFile#") + ");'></div><div class='product-name'>#: ProductName #</div>")
+          .Width(350);
+
         columns.Bound(p => p.FromDate).Width(130).Format("{0:dd-MMM-yyyy}");
-        columns.Bound(p => p.TargetAmount).Width(130);
-        columns.Bound(p => p.MinimumAmount).Width(130);
-        columns.Bound(p => p.MaximumAmount).Width(130);
-        columns.Command(command => { command.Edit().Text(" "); command.Destroy().Text(" "); }).Width(140);
+        columns.Bound(p => p.TargetAmount).Width(200);
+        columns.Bound(p => p.MinimumAmount).Width(200);
+        columns.Bound(p => p.MaximumAmount).Width(200);
+        columns.Bound(p => p.RoI).Width(150);
+        columns.Command(command => { command.Edit().Text(" "); command.Destroy().Text(" "); }).Width(160);
     })
     .ToolBar(toolbar => toolbar.Create().Text("Add Investment Cycle"))
     .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("Template_InvestmentCycle"))
@@ -59,3 +66,25 @@
         .Destroy(update => update.Action("EditingInvestmentCyclePopup_Destroy", "InvestmentCycle"))
     )
 )
+
+<style>
+    .product-photo {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 32px 35px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-left: 5px;
+    }
+
+    .product-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 10px;
+    }
+</style>

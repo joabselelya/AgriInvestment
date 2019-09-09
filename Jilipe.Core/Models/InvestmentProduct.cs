@@ -30,6 +30,12 @@ namespace AgriInvestment.Core.Models
         [Required(ErrorMessage = "Product category is required")]
         public int ProductCategoryId { get; set; }
 
+        public string ImageFile {
+            get{
+                return "prod" + Id.ToString() + ".jpg";
+            }
+        }
+
         [UIHint("InvestmentCategory")]
         [DisplayName("Category")]
         public InvestmentCategory InvestmentCategory { get; set; }
