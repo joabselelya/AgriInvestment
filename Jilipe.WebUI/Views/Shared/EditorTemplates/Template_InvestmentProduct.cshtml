@@ -4,8 +4,8 @@
     @Html.HiddenFor(model => model.Id)
     @Html.HiddenFor(model => model.InvestmentsCount)
 
-    <div style="margin-bottom:15px; back">
-        <div id="productPhoto" class='productPhotoBox' style='background-image: url(" + @Url.Content("~/Images/Products/1.jpg") + ");'></div>
+    <div style="margin-bottom:15px;">
+        <div id="productPhoto" class='productPhotoBox' style='background-image: url(/Images/Products/@Model.ImageFile);'></div>
         @(Html.Kendo().Upload()
             .Name("uploadProductPhoto")
             .Multiple(false)
@@ -16,7 +16,7 @@
                 .Save("AsyncSavePhoto", "InvestmentProduct")
                 .Remove("AsyncRemovePhoto", "InvestmentProduct")
             )
-            .Validation(validation => validation.AllowedExtensions(new string[] { ".jpeg" }))
+            .Validation(validation => validation.AllowedExtensions(new string[] { ".jpg" }))
         )
     </div>
     <div>

@@ -25,8 +25,12 @@
         }
     }
 
+    function synch_handler(e) {
+        this.read();
+    }
+
     function onSuccess(e) {
-        alert('here');
+        //alert('here');
         if (e.operation == "upload") {
             for (var i = 0; i < e.files.length; i++) {
                 var file = e.files[i].rawFile;
@@ -35,7 +39,9 @@
                     var reader = new FileReader();
                     
                     reader.onloadend = function () {
-                        $("#productPhoto").css('background-image', '@Url.Content("~/Images/Products/1.jpg")');
+                        //alert('inside');
+                        $("#productPhoto").css('background-image', this.result);
+                        //alert(file);
                     };
 
                     reader.readAsDataURL(file);
@@ -76,6 +82,7 @@
         .PageSize(10)
         .Events(events => events
             .Error("error_handler")
+            .Sync("synch_handler")
         )
         .Model(model => model.Id(p => p.Id))
         .Create(update => update.Action("EditingInvestmentProductPopup_Create", "InvestmentProduct"))
